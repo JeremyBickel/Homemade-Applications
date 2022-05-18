@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bible Searcher", "Bible Sea
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordTactics", "WordTactics\WordTactics.csproj", "{EDEC2B6D-EDAC-4AC5-B12C-8F2862F32A4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkFFMpegConverter", "BulkFFMpegConverter\BulkFFMpegConverter.csproj", "{74438CF2-A6CB-4367-9E87-C2E998E32DF8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
