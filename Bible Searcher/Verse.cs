@@ -45,14 +45,14 @@ namespace Bible_Searcher
 
     internal class SVO
     {
-        Dictionary<int, string> dSubjects = new Dictionary<int, string>();
-        Dictionary<int, string> dVerbs = new Dictionary<int, string>();
-        Dictionary<int, ObjectRelation> dObjectRelations = new Dictionary<int, ObjectRelation>();
+        public Dictionary<int, string> dSubjects = new Dictionary<int, string>();
+        public Dictionary<int, string> dVerbs = new Dictionary<int, string>();
+        public Dictionary<int, ObjectRelation> dObjectRelations = new Dictionary<int, ObjectRelation>();
     }
 
     internal class ObjectRelation
     {
-        string strObject = "";
-        string strRelation = ""; //eg. the preposition
+        public string strObject = "";
+        public string strRelation = ""; //eg. the preposition
     }
 }

@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bible Searcher", "Bible Searcher\Bible Searcher.csproj", "{E324C2B6-CE4A-48E2-9D88-C52709DD3509}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bible Searcher", "Bible Searcher\Bible Searcher.csproj", "{E324C2B6-CE4A-48E2-9D88-C52709DD3509}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordTactics", "WordTactics\WordTactics.csproj", "{EDEC2B6D-EDAC-4AC5-B12C-8F2862F32A4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkFFMpegConverter", "BulkFFMpegConverter\BulkFFMpegConverter.csproj", "{74438CF2-A6CB-4367-9E87-C2E998E32DF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{E324C2B6-CE4A-48E2-9D88-C52709DD3509}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E324C2B6-CE4A-48E2-9D88-C52709DD3509}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E324C2B6-CE4A-48E2-9D88-C52709DD3509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDEC2B6D-EDAC-4AC5-B12C-8F2862F32A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDEC2B6D-EDAC-4AC5-B12C-8F2862F32A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDEC2B6D-EDAC-4AC5-B12C-8F2862F32A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDEC2B6D-EDAC-4AC5-B12C-8F2862F32A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74438CF2-A6CB-4367-9E87-C2E998E32DF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74438CF2-A6CB-4367-9E87-C2E998E32DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74438CF2-A6CB-4367-9E87-C2E998E32DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74438CF2-A6CB-4367-9E87-C2E998E32DF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

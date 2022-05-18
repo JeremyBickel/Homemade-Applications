@@ -1,5 +1,7 @@
-using System.Text.RegularExpressions;
+﻿using System.Data;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Bible_Searcher
 {
@@ -11,8 +13,11 @@ namespace Bible_Searcher
         Dictionary<int, Dictionary<int, string>> dBLBHebrewConcordance = new Dictionary<int, Dictionary<int, string>>(); //D<Concordance ID, D<Reference ID, Reference>>
         Dictionary<int, Dictionary<int, string>> dBLBGreekConcordance = new Dictionary<int, Dictionary<int, string>>(); //D<Concordance ID, D<Reference ID, Reference>>
 
-        Dictionary<string, int> dEnglishPhraseCountsOrderedByCount = new Dictionary<string, int>();
-        Dictionary<string, int> dEnglishPhraseCountsOrderedByPhrase = new Dictionary<string, int>();
+        Dictionary<string, List<string>> dPhrasalConcordance = new Dictionary<string, List<string>>(); //D<Phrase, L<ReferenceStrings>>
+
+        Dictionary<string, int> dSSCountsOrderedBySS = new Dictionary<string, int>(); //D<strongs sequence, count> (ordered by ss)
+        Dictionary<string, int> dSSCountsOrderedByCount = new Dictionary<string, int>(); //D<strongs sequence, count> (ordered by count)
+        Dictionary<string, int> dSSComplexCountsOrderedByCount = new Dictionary<string, int>(); //D<multiple strongs sequences for a single phrase, count>
 
         //Tests for BLB Hebrew Lexicon
         Dictionary<int, BLBHebrewLexicon> dHRoots = new Dictionary<int, BLBHebrewLexicon>();
@@ -21,9 +26,16 @@ namespace Bible_Searcher
         Dictionary<int, BLBHebrewLexicon> dHNonAramaic = new Dictionary<int, BLBHebrewLexicon>();
         Dictionary<int, BLBHebrewLexicon> dHRootedAramaic = new Dictionary<int, BLBHebrewLexicon>();
 
+        CrossReferences crossReferences = new CrossReferences();
+
         public Welcome()
         {
             InitializeComponent();
+
+            //
+            //Step Bible Hebrew Lexicon
+            //
+            //FillSTEPBibleHebrewLexicon();
 
             //
             //UI
@@ -43,9 +55,8 @@ namespace Bible_Searcher
             //
             FillKJVStrongs();
             ParseKJVStrongs();
-            CalculateEnglishPhraseCounts();
 
-            //Test BLB Hebrew Lexicon
+            //BLB Hebrew Lexicon Derivatives
             dHRoots = HRoots();
             dHNonRoots = HNonRoots();
             dHAramaic = Aramaic();
@@ -56,6 +67,29 @@ namespace Bible_Searcher
             //Bible
             //
             CalculateSVOs();
+
+            //
+            //Cross References
+            //
+            crossReferences.FillCrossReferences();
+
+            //
+            //Phrasal Concordance
+            //
+            CreatePhrasalConcordance();
+
+            //HARD DRIVE WARNING: These files become large. For instance, they top 100MB at length 24.
+            //54 is the last length that produces phrases with a count greater than 1 for the kjvstrongs.csv file
+            for (int i = 2; i <= 54; i++) 
+            {
+                CreateChainedPhrasalConcordance(i);
+            }
+
+            //
+            //Write CSV Files
+            //
+            WriteCSVFiles();
+
         }
 
         public void FillLBBooks()
@@ -135,6 +169,8 @@ namespace Bible_Searcher
             int intBookNumber = 0;
             int intVerseID = 0;
 
+            srBible.ReadLine(); //Go past the header
+
             while (!srBible.EndOfStream)
             {
                 string strLine = srBible.ReadLine();
@@ -165,7 +201,13 @@ namespace Bible_Searcher
 
                 strLine = strLine.Remove(0, intComma + 1);
                 strLine = strLine.Trim();
-                v.strText = strLine;
+
+                //Some phrases contain multiple spaces between words. Cut them out.
+                foreach (string strWord in strLine.Split(" ", StringSplitOptions.RemoveEmptyEntries))
+                {
+                    v.strText += strWord + " ";
+                }
+                v.strText = v.strText.Trim();
 
                 dVerses.Add(v.intVerseID, v);
             }
@@ -173,11 +215,22 @@ namespace Bible_Searcher
 
         public void ParseKJVStrongs()
         {
-            Regex rgxText = new(@"(?<phrase>[a-z'A-Z ]{0,})(?<strongs>(\{\({0,} [0-9]{1,} \){0,}\}){1,})");
+            //Regex rgxText = new(@"(?<phrase>[a-z'A-Z ]{0,})(?<strongs>(\{\({0,} [0-9]{1,} \){0,}\}){1,})");
+            Regex rgxText = new(@"(?<phrase>[^{]{0,})(?<strongs>(\{\({0,} [0-9]{1,} \){0,}\} {0,}){1,})");
+            string strLanguage = "";
 
             foreach (int intVerseID in dVerses.Keys)
             {
                 int intPhraseID = 0;
+
+                if (intVerseID <= 23145)
+                {
+                    strLanguage = "Hebrew";
+                }
+                else
+                {
+                    strLanguage = "Greek";
+                }
 
                 foreach (Match mPhrase in rgxText.Matches(dVerses[intVerseID].strText))
                 {
@@ -194,7 +247,7 @@ namespace Bible_Searcher
                     {
                         Regex rgxLowerLetters = new Regex(@"[^a-z\/ ]");
                         bool bParenthecized = capStrongs.Value.Contains("(");
-                        string strStrongsNumber = capStrongs.Value.TrimStart('{').TrimEnd('}').TrimStart('(').TrimEnd(')').Trim();
+                        string strStrongsNumber = capStrongs.Value.Trim().TrimStart('{').TrimEnd('}').TrimStart('(').TrimEnd(')').Trim();
                         string strPOS = "";
                         int intStrongsNumber = Convert.ToInt32(strStrongsNumber);
 
@@ -210,11 +263,15 @@ namespace Bible_Searcher
 
                         foreach (string strPOSPart in strPOS.Split())
                         {
-                            if (intStrongsNumber == 853 || intStrongsNumber == 3487) //H853, H3487 means "Direct Object"
+                            if (strLanguage == "Hebrew")
                             {
-                                dVerses[intVerseID].dPhrases[intPhraseID].dStrongsSequences[intCaptureID].bObject = true;
+                                if (intStrongsNumber == 853 || intStrongsNumber == 3487) //H853, H3487 means "Direct Object"
+                                {
+                                    dVerses[intVerseID].dPhrases[intPhraseID].dStrongsSequences[intCaptureID].bObject = true;
+                                }
                             }
-                            else if (strPOSPart == "n" || strPOSPart == "adj" || strPOSPart == "adv" || strPOSPart == "pr" ||
+                            
+                            if (strPOSPart == "n" || strPOSPart == "adj" || strPOSPart == "adv" || strPOSPart == "pr" ||
                                 strPOSPart == "pron" || strPOSPart == "adjective" || strPOSPart == "adverb" || strPOSPart == "adj/subst")
                             {
                                 dVerses[intVerseID].dPhrases[intPhraseID].dStrongsSequences[intCaptureID].bThing = true;
@@ -234,46 +291,265 @@ namespace Bible_Searcher
             }
         }
 
-        public void CalculateEnglishPhraseCounts()
+        public void CreatePhrasalConcordance()
         {
-            Dictionary<string, int> dEnglishPhraseCounts = new Dictionary<string, int>();
+            //intChainLength determines how many successive phrases will be considered for a chained phrasal concordance
+            // default of 1 means to output a regular phrasal concordance
+
+            var getConcordanceByPhraseCount = dPhrasalConcordance.OrderByDescending(a => a.Value.Count());
+            StreamWriter swPhrasalConcordance = new StreamWriter(@"Data\PhrasalConcordance.csv");
             
             foreach (Verse v in dVerses.Values)
             {
                 foreach (Phrase p in v.dPhrases.Values)
                 {
                     string strPhrase = p.strPhraseText.ToLower();
+                    string strReference = v.strBookName + " " + v.intChapterNumber.ToString() + ":" + v.intVerseNumber.ToString() + "." + p.intPhraseID.ToString();
 
-                    if (!dEnglishPhraseCounts.ContainsKey(strPhrase))
+                    if (!dPhrasalConcordance.ContainsKey(strPhrase))
                     {
-                        dEnglishPhraseCounts.Add(strPhrase, 1);
+                        dPhrasalConcordance.Add(strPhrase, new List<string>());
                     }
-                    else
-                    {
-                        dEnglishPhraseCounts[strPhrase]++;
-                    }
+
+                    dPhrasalConcordance[strPhrase].Add(strReference);
                 }
             }
 
-            foreach (string strKey in dEnglishPhraseCounts.OrderByDescending(a => a.Value).Select(a => a.Key))
+            swPhrasalConcordance.WriteLine("Phrase ^ Reference ^ Count");
+
+            foreach (var phrase in getConcordanceByPhraseCount)
             {
-                dEnglishPhraseCountsOrderedByCount.Add(strKey, dEnglishPhraseCounts[strKey]);
+                foreach (string strRef in phrase.Value)
+                {
+                    swPhrasalConcordance.WriteLine(phrase.Key + " ^ " + strRef + " ^ " + phrase.Value.Count.ToString());
+                }
             }
 
-            foreach (string strKey in dEnglishPhraseCounts.OrderBy(a => a.Key).Select(a => a.Key))
+            swPhrasalConcordance.Close();
+        }
+
+        public void CreateChainedPhrasalConcordance(int intChainLength = 1)
+        {
+            StreamWriter swChainedPhrasalConcordance;
+            StreamWriter swChainedPhrasalConcordanceCounts;
+            Dictionary<string, string[]> dChainedPhrases = new Dictionary<string, string[]>();
+            Dictionary<string, int> dCounts = new Dictionary<string, int>(); //D<Phrase, Count>
+            string[] strsChainedPhrasesHistory = (string[])Array.CreateInstance(typeof(string), intChainLength); //A[this-intChainLength+1, this-intChainLength+2, .., this-intChainLength+intChainLength]
+            string strChainedPhraseBuilder = "";
+
+            //initialize strsChainedPhrasesHistory
+            for (int i = 0; i < intChainLength; i++)
             {
-                dEnglishPhraseCountsOrderedByPhrase.Add(strKey, dEnglishPhraseCounts[strKey]);
+                strsChainedPhrasesHistory[i] = "";
             }
+
+            foreach (Verse v in dVerses.Values)
+            {
+                foreach (Phrase p in v.dPhrases.Values)
+                {
+                    string strPhrase = p.strPhraseText.ToLower();
+                    string strReference = v.strBookName + " " + v.intChapterNumber.ToString() + ":" + v.intVerseNumber.ToString() + "." + p.intPhraseID.ToString();
+                    string[] strsChainedPhrasesHistoryCopy = (string[])Array.CreateInstance(typeof(string), intChainLength);
+
+                    //insert new phrase into history
+                    for (int intCurrentChainedPhraseElement = 1; intCurrentChainedPhraseElement < intChainLength; intCurrentChainedPhraseElement++)
+                    {
+                        strsChainedPhrasesHistory[intCurrentChainedPhraseElement - 1] = strsChainedPhrasesHistory[intCurrentChainedPhraseElement];
+                    }
+
+                    strsChainedPhrasesHistory[intChainLength - 1] = strPhrase; //populate the last element of the array with strPhrase
+
+                    strsChainedPhrasesHistory.CopyTo(strsChainedPhrasesHistoryCopy, 0);
+
+                    dChainedPhrases.Add(strReference, strsChainedPhrasesHistoryCopy);
+                }
+            }
+
+            swChainedPhrasalConcordance = new StreamWriter(@"Data\ChainedPhrasalConcordance-" + intChainLength.ToString() + ".csv");
+
+            swChainedPhrasalConcordance.WriteLine("Reference ^ ChainEndingWithPhrase");
+
+            foreach (string strReference in dChainedPhrases.Keys.OrderBy(a => a))
+            {
+                strChainedPhraseBuilder = "";
+
+                swChainedPhrasalConcordance.Write(strReference + " ^ ");
+
+                for (int intCurrentChainedPhraseElement = 0; intCurrentChainedPhraseElement < dChainedPhrases[strReference].Length; intCurrentChainedPhraseElement++)
+                {
+                    strChainedPhraseBuilder += dChainedPhrases[strReference][intCurrentChainedPhraseElement] + " ";
+                }
+
+                swChainedPhrasalConcordance.WriteLine(strChainedPhraseBuilder.Trim());
+
+                //
+                //Counts
+                //
+
+                if (!dCounts.ContainsKey(strChainedPhraseBuilder))
+                {
+                    dCounts.Add(strChainedPhraseBuilder, 0);
+                }
+
+                dCounts[strChainedPhraseBuilder]++;
+            }
+
+            swChainedPhrasalConcordance.Close();
+
+            swChainedPhrasalConcordanceCounts = new StreamWriter(@"Data\ChainedPhrasalConcordance-" + intChainLength.ToString() + "-Counts.csv");
+
+            swChainedPhrasalConcordanceCounts.WriteLine("Phrase ^ Count");
+
+            foreach (string strPhrase in dCounts.Where(a=>a.Value > 1).OrderByDescending(a=>a.Value).Select(a=>a.Key))
+            {
+                swChainedPhrasalConcordanceCounts.WriteLine(strPhrase + " ^ " + dCounts[strPhrase].ToString());
+            }
+
+            swChainedPhrasalConcordanceCounts.Close();
+        }
+
+        public IOrderedEnumerable<string> GetEnglishPhraseOrderedByCount()
+        {
+            var oReturn =
+                from phrase in dPhrasalConcordance.Keys
+                orderby dPhrasalConcordance.Values.Count() descending
+                select phrase;
+
+            return oReturn;
+        }
+
+        public IOrderedEnumerable<string> GetEnglishPhraseOrderedByPhrase()
+        {
+            var oReturn =
+                from phrase in dPhrasalConcordance.Keys
+                orderby dPhrasalConcordance.Keys
+                select phrase;
+
+            return oReturn;
         }
 
         public void CalculateSVOs()
         {
+            //Find subject
+            //Find verbs
+            //Find objects
+            //Find relationships between these three
+            //
+            //Find relationships between subjects in similar contexts??
+
+            //Doing this in Hebrew is too hard for me, so I'm opting to do it for the KJV text,
+            // using the Strongs numbers as a phrase separator.
+
             int intHighestHLexID = dBLBHebrewLexiconEntries.Keys.Max();
             int intHighestGLexID = dBLBGreekLexiconEntries.Keys.Max();
             Regex rgxNumbers = new Regex(@"[0-9]{1,}");
             Dictionary<int, SVO> dSVOs = new Dictionary<int, SVO>();
-            
-            
+            Dictionary<int, int> dSentenceLocations = new Dictionary<int, int>(); //D<SentenceID, VerseID> ; some verses have more than one sentence
+            Dictionary<string, int> dPhraseCounts = new Dictionary<string, int>(); //D<phrase, count>
+            bool bMakeNewSentence = false;
+            Dictionary<string, int> dSSs = new Dictionary<string, int>(); //D<strongs sequence, count>
+            StreamWriter swSSComplex = new StreamWriter(@"Data\Counts for Phrases with Multiple Strongs Numbers.csv"); //Strong's sequence contains a "-"
+            StreamWriter swSSComplexTranslation = new StreamWriter(@"Data\Counts for Phrases with Multiple Strongs Numbers, First English Translation.csv"); //First english translation when the Strong's sequence contains a "-"
+            string strStrongsLanguageIdentifier = "H";
+            int intSSComplexLineID = 0;
+
+            dSVOs.Add(1, new SVO()); //Start with a new sentence
+
+            //Output files headers
+            swSSComplex.WriteLine("PhraseID ^ ComplexPhraseStrongsSequence ^ PhraseCount");
+            swSSComplexTranslation.WriteLine("PhraseID ^ ComplexPhraseEnglishText ^ PhraseCount");
+
+            foreach (Verse v in dVerses.OrderBy(a => a.Key).Select(a => a.Value))
+            {
+                if (v.intBookNumber <= 39)
+                {
+                    strStrongsLanguageIdentifier = "H";
+                }
+                else
+                {
+                    strStrongsLanguageIdentifier = "G";
+                }
+
+                foreach (Phrase p in v.dPhrases.OrderBy(a => a.Key).Select(a => a.Value))
+                {
+                    string strSS = "";
+
+                    foreach (StrongsSequence ss in p.dStrongsSequences.OrderBy(a => a.Key).Select(a => a.Value))
+                    {
+                        strSS += strStrongsLanguageIdentifier + ss.strStrongsNumber + "-";
+                    }
+
+                    strSS = strSS.TrimEnd('-');
+
+                    if (dSSs.ContainsKey(strSS))
+                    {
+                        dSSs[strSS]++;
+                    }
+                    else
+                    {
+                        dSSs.Add(strSS, 1);
+                    }
+
+                    ////Prepositional Phrases
+                    //if (p.strPhraseText.Trim().Split().Count() == 1)
+                    //{
+                    //}
+                    //else
+                    //{
+                    //    // if (PrepositionList.Contains(p.strPhraseText.Trim().Split()[0])){} //Prepositional Phrase
+
+                    //    foreach (string strWord in p.strPhraseText.Trim().Split())
+                    //    {
+
+                    //    }
+                    //}
+                }
+            }
+
+            foreach (string strSS in dSSs.OrderBy(a => a.Key).Select(a => a.Key))
+            {
+                dSSCountsOrderedBySS.Add(strSS, dSSs[strSS]);
+            }
+
+            foreach (string strSS in dSSs.OrderByDescending(a => a.Value).Select(a => a.Key))
+            {
+                dSSCountsOrderedByCount.Add(strSS, dSSs[strSS]);
+            }
+
+            foreach (string strSS in dSSs.OrderByDescending(a => a.Value).Select(a => a.Key))
+            {
+                if (strSS.Contains('-'))
+                {
+                    string strTranslation = "";
+
+                    intSSComplexLineID++;
+
+                    dSSComplexCountsOrderedByCount.Add(strSS, dSSs[strSS]);
+                    swSSComplex.WriteLine(intSSComplexLineID.ToString() + " ^ " + strSS + " ^ " + dSSs[strSS]);
+
+                    foreach (string strSS1 in strSS.Split('-'))
+                    {
+                        if (strSS1.StartsWith('H'))
+                        {
+                            strTranslation += dBLBHebrewLexiconEntries[Convert.ToInt32(strSS1.Substring(1))].dAVTranslations.OrderByDescending(a => a.Value).Select(a => a.Key).First() + "-";
+                        }
+                        else if (strSS1.StartsWith('G'))
+                        {
+                            strTranslation += dBLBHebrewLexiconEntries[Convert.ToInt32(strSS1.Substring(1))].dAVTranslations.OrderByDescending(a => a.Value).Select(a => a.Key).First() + "-";
+                        }
+                        else
+                        {
+                            throw new Exception("Counts for Phrases with Multiple Strongs Numbers, First English Translation, SS Language Error");
+                        }
+                    }
+
+                    strTranslation = strTranslation.TrimEnd('-');
+                    swSSComplexTranslation.WriteLine(intSSComplexLineID.ToString() + " ^ " + strTranslation + " ^ " + dSSs[strSS]);
+                }
+            }
+
+            swSSComplex.Close();
+            swSSComplexTranslation.Close();
         }
 
         public void FillBLBHebrewLexicon()
@@ -340,7 +616,7 @@ namespace Bible_Searcher
                 //strSecondPart = rgxINDENT.Replace(strSecondPart, "");
 
                 blbLex.intLexID = intLexID;
-
+                
                 if (intLexID > 0) //account for metadata at top of data file HebLex.js
                 {
                     intPartNumber = 0;
@@ -623,7 +899,7 @@ namespace Bible_Searcher
         {
             ///
             ///NOTE: There's no G2717, G3203-G3302
-            ///NOTE: G4483 inserts 9 as the count for the AV translation "say" (there was no count given),
+            ///NOTE: G4483 inserts 9 as the count for the AV translation "say" (there was no count given in the input file),
             /// even though there are 11 instances in KJV, in order to fit the total of 26
             ///
 
@@ -653,7 +929,7 @@ namespace Bible_Searcher
             List<string> lNonRoots = new List<string>();
             //StreamReader srRoots = new StreamReader(@"Data\GreekRoots.txt");
             //StreamReader srNonRoots = new StreamReader(@"Data\GreekNon-Roots.txt");
-
+            
             //while (!srRoots.EndOfStream)
             //{
             //    lRoots.Add(srRoots.ReadLine().Trim());
@@ -952,7 +1228,7 @@ namespace Bible_Searcher
                 {
                     dBLBHebrewConcordance.Add(intNumber, new Dictionary<int, string>());
                 }
-                else //this must be greek due to the if then else trap above
+                else //this must be greek due to the if then else trap above the current while loop
                 {
                     dBLBGreekConcordance.Add(intNumber, new Dictionary<int, string>());
                 }
@@ -989,6 +1265,330 @@ namespace Bible_Searcher
                     }
                 }
             }
+        }
+
+        public void FillSTEPBibleHebrewLexicon()
+        {
+            //Gen.46.18-12	Gen.46.18-12	לְיַעֲקֹב	לְ/יַעֲקֹ֔ב	HR/Npm	H9005=ל=to/H3290=יַעֲקֹב=Jacob_§Jacob|Israel@Gen.25.26
+
+            Dictionary<string, string> dNormalize = new Dictionary<string, string>(); //D<seen, normalized>
+            STEPBibleHebrewLexicon stepBibleHebrewLexicon = new STEPBibleHebrewLexicon();
+
+            dNormalize.Add("Gen", "Genesis");
+            dNormalize.Add("Exo", "Exodus");
+            dNormalize.Add("Lev", "Leviticus");
+            dNormalize.Add("Num", "Numbers");
+            dNormalize.Add("Deu", "Deuteronomy");
+            dNormalize.Add("Jos", "Joshua");
+            dNormalize.Add("Jdg", "Judges");
+            dNormalize.Add("Rut", "Ruth");
+            dNormalize.Add("1Sa", "1 Samuel");
+            dNormalize.Add("2Sa", "2 Samuel");
+            dNormalize.Add("1Ki", "1 Kings");
+            dNormalize.Add("2Ki", "2 Kings");
+            dNormalize.Add("1Ch", "1 Chronicles");
+            dNormalize.Add("2Ch", "2 Chronicles");
+            dNormalize.Add("Ezr", "Ezra");
+            dNormalize.Add("Neh", "Nehemiah");
+            dNormalize.Add("Est", "Esther");
+            dNormalize.Add("Job", "Job");
+            dNormalize.Add("Psa", "Psalms");
+            dNormalize.Add("Pro", "Proverbs");
+            dNormalize.Add("Ecc", "Ecclesiastes");
+            dNormalize.Add("Sng", "Song of Solomon");
+            dNormalize.Add("Isa", "Isaiah");
+            dNormalize.Add("Jer", "Jeremiah");
+            dNormalize.Add("Lam", "Lamentations");
+            dNormalize.Add("Ezk", "Ezekiel");
+            dNormalize.Add("Dan", "Daniel");
+            dNormalize.Add("Hos", "Hosea");
+            dNormalize.Add("Jol", "Joel");
+            dNormalize.Add("Amo", "Amos");
+            dNormalize.Add("Oba", "Obadiah");
+            dNormalize.Add("Jon", "Jonah");
+            dNormalize.Add("Mic", "Micah");
+            dNormalize.Add("Nam", "Nahum");
+            dNormalize.Add("Hab", "Habakkuk");
+            dNormalize.Add("Zep", "Zephaniah");
+            dNormalize.Add("Hag", "Haggai");
+            dNormalize.Add("Zec", "Zechariah");
+            dNormalize.Add("Mal", "Malachi");
+
+            stepBibleHebrewLexicon.Read();
+        }
+
+        public void WriteCSVFiles()
+        {
+            StreamWriter swVerses = new StreamWriter(@"Data\Verses.csv");
+            StreamWriter swBLBHebrewLexicon = new StreamWriter(@"Data\BLBHebrewLexicon.csv");
+            StreamWriter swBLBGreekLexicon = new StreamWriter(@"Data\BLBGreekLexicon.csv");
+            StreamWriter swBLBHebrewConcordance = new StreamWriter(@"Data\BLBHebrewConcordance.csv");
+            StreamWriter swBLBGreekConcordance = new StreamWriter(@"Data\BLBGreekConcordance.csv");
+            StreamWriter swEnglishPhraseCountsByPhrase = new StreamWriter(@"Data\EnglishPhraseCountsByPhrase.csv");
+            StreamWriter swEnglishPhraseCountsByCount = new StreamWriter(@"Data\EnglishPhraseCountsByCount.csv");
+            StreamWriter swSSBySS = new StreamWriter(@"Data\StrongsSequencesBySS.csv");
+            StreamWriter swSSByCount = new StreamWriter(@"Data\StrongsSequencesByCount.csv");
+            StreamWriter swCrossrefs = new StreamWriter(@"Data\CrossReferences.csv");
+
+            int intRowCounter = 0;
+
+            //
+            //dVerses
+            //
+
+            swVerses.WriteLine("VerseID ^ BookNumber ^ BookName ^ ChapterNumber ^ VerseNumber ^ Phrases");
+
+            foreach (int intVerseID in dVerses.Keys.OrderBy(a => a))
+            {
+                string strLine = intVerseID.ToString();
+
+                strLine += " ^ " + dVerses[intVerseID].intBookNumber.ToString() + " ^ " + dVerses[intVerseID].strBookName + 
+                    " ^ " + dVerses[intVerseID].intChapterNumber.ToString() + " ^ " + dVerses[intVerseID].intVerseNumber.ToString() + " ^ ";
+
+                foreach (int intPhraseID in dVerses[intVerseID].dPhrases.OrderBy(a => a.Key).Select(a => a.Key))
+                {
+                    strLine += "{" + dVerses[intVerseID].dPhrases[intPhraseID].strPhraseText + " ";
+
+                    foreach (int intSSID in dVerses[intVerseID].dPhrases[intPhraseID].dStrongsSequences.OrderBy(a => a.Key).Select(a => a.Key))
+                    {
+                        strLine += "[" + dVerses[intVerseID].dPhrases[intPhraseID].dStrongsSequences[intSSID].strStrongsNumber + "] ";
+                    }
+
+                    strLine = strLine.TrimEnd();
+                    strLine += "} ";
+                }
+
+                swVerses.WriteLine(strLine.TrimEnd());
+            }
+
+            swVerses.Close();
+
+            //
+            //dBLBHebrewLexiconEntries
+            //
+
+            swBLBHebrewLexicon.WriteLine("LexicalID ^ Aramaic ^ Pronunciation ^ Transliteration ^ TotalTranslation ^ AVTranslationsWithCount ^ Root ^ Connections ^ TWOTNumber ^ POS ^ LexicalEntries");
+
+            foreach (int intLexID in dBLBHebrewLexiconEntries.Keys.OrderBy(a => a))
+            {
+                string strLine = intLexID.ToString() + " ^ ";
+
+                strLine += dBLBHebrewLexiconEntries[intLexID].bAramaic.ToString() + " ^ " + dBLBHebrewLexiconEntries[intLexID].strPronunciation +
+                    " ^ " + dBLBHebrewLexiconEntries[intLexID].strTransliteration + " ^ " + dBLBHebrewLexiconEntries[intLexID].intTotalTranslated.ToString() +
+                    " ^ ";
+
+                foreach (string strTranslation in dBLBHebrewLexiconEntries[intLexID].dAVTranslations.OrderByDescending(a => a.Value).Select(a=>a.Key))
+                {
+                    strLine += strTranslation + " " + dBLBHebrewLexiconEntries[intLexID].dAVTranslations[strTranslation].ToString() + "; ";
+                }
+
+                strLine.Remove(strLine.Length - 2); //remove the trailing "; "
+
+                strLine += " ^ " + dBLBHebrewLexiconEntries[intLexID].bRoot.ToString() + " ^ " + dBLBHebrewLexiconEntries[intLexID].strConnection +
+                    " ^ " + dBLBHebrewLexiconEntries[intLexID].strTWOTNumber + " ^ " + dBLBHebrewLexiconEntries[intLexID].strPOS + " ^ ";
+
+                foreach (string strLexicalEntry in dBLBHebrewLexiconEntries[intLexID].dLexicalEntries.Keys.OrderBy(a => a))
+                {
+                    strLine += strLexicalEntry + " " + dBLBHebrewLexiconEntries[intLexID].dLexicalEntries[strLexicalEntry] + "; ";
+                }
+
+                strLine.Remove(strLine.Length - 2); //remove the trailing "; "
+
+                swBLBHebrewLexicon.WriteLine(strLine);
+            }
+
+            swBLBHebrewLexicon.Close();
+
+            //
+            //dBLBGreekLexiconEntries
+            //
+
+            swBLBGreekLexicon.WriteLine("LexicalID ^ Pronunciation ^ Transliteration ^ TotalTranslation ^ TDNT ^ Conjugations ^ AVTranslationsWithCount ^ Root ^ Connections ^ TWOTNumber ^ POS ^ LexicalEntries");
+
+            foreach (int intLexID in dBLBGreekLexiconEntries.Keys.OrderBy(a => a))
+            {
+                string strLine = intLexID.ToString() + " ^ ";
+
+                strLine += dBLBGreekLexiconEntries[intLexID].strPronunciation + " ^ " + dBLBGreekLexiconEntries[intLexID].strTransliteration +
+                    " ^ " + dBLBGreekLexiconEntries[intLexID].intTotalTranslated.ToString() + " ^ ";
+
+                if (dBLBGreekLexiconEntries[intLexID].dExtraTDNTInformation.Count() > 0)
+                {
+                    foreach (string strTDNT in dBLBGreekLexiconEntries[intLexID].dExtraTDNTInformation.Keys.OrderBy(a => a))
+                    {
+                        strLine += strTDNT + "; ";
+                    }
+
+                    strLine = strLine.Remove(strLine.Length - 2).Trim(); //remove the trailing "; "
+                }
+
+                strLine += " ^ ";
+
+                if (dBLBGreekLexiconEntries[intLexID].lConjugated.Count() > 0)
+                {
+                    foreach (string strConjugated in dBLBGreekLexiconEntries[intLexID].lConjugated)
+                    {
+                        strLine += strConjugated + "; ";
+                    }
+
+                    strLine = strLine.Remove(strLine.Length - 2).Trim(); //remove the trailing "; "
+                }
+
+                strLine += " ^ ";
+
+                if (dBLBGreekLexiconEntries[intLexID].dAVTranslations.Count() > 0)
+                {
+                    foreach (string strTranslation in dBLBGreekLexiconEntries[intLexID].dAVTranslations.OrderByDescending(a => a.Value).Select(a => a.Key))
+                    {
+                        strLine += strTranslation + " " + dBLBGreekLexiconEntries[intLexID].dAVTranslations[strTranslation].ToString() + "; ";
+                    }
+
+                    strLine = strLine.Remove(strLine.Length - 2).Trim(); //remove the trailing "; "
+                }
+
+                strLine += " ^ " + dBLBGreekLexiconEntries[intLexID].bRoot.ToString() + " ^ " + dBLBGreekLexiconEntries[intLexID].strConnection +
+                    " ^ " + dBLBGreekLexiconEntries[intLexID].strTWOTNumber + " ^ " + dBLBGreekLexiconEntries[intLexID].strPOS + " ^ ";
+
+                if (dBLBGreekLexiconEntries[intLexID].dLexicalEntries.Count() > 0)
+                {
+                    foreach (string strLexicalEntry in dBLBGreekLexiconEntries[intLexID].dLexicalEntries.Keys.OrderBy(a => a))
+                    {
+                        strLine += dBLBGreekLexiconEntries[intLexID].dLexicalEntries[strLexicalEntry] + "; ";
+                    }
+
+                    strLine = strLine.Remove(strLine.Length - 2).Trim(); //remove the trailing "; "
+                }
+
+                swBLBGreekLexicon.WriteLine(strLine);
+            }
+
+            swBLBGreekLexicon.Close();
+
+            //
+            //dBLBHebrewConcordance
+            //
+
+            swBLBHebrewConcordance.WriteLine("GroupID ^ ReferenceID ^ Reference");
+
+            foreach (int intGroupID in dBLBHebrewConcordance.Keys.OrderBy(a => a))
+            {
+                foreach (int intReferenceID in dBLBHebrewConcordance[intGroupID].Keys.OrderBy(a => a))
+                {
+                    swBLBHebrewConcordance.WriteLine(intGroupID.ToString() + " ^ " + intReferenceID.ToString() + 
+                        " ^ " + dBLBHebrewConcordance[intGroupID][intReferenceID]);
+                }
+            }
+
+            swBLBHebrewConcordance.Close();
+
+            //
+            //dBLBGreekConcordance
+            //
+
+            swBLBGreekConcordance.WriteLine("GroupID ^ ReferenceID ^ Reference");
+
+            foreach (int intGroupID in dBLBGreekConcordance.Keys.OrderBy(a => a))
+            {
+                foreach (int intReferenceID in dBLBGreekConcordance[intGroupID].Keys.OrderBy(a => a))
+                {
+                    swBLBGreekConcordance.WriteLine(intGroupID.ToString() + " ^ " + intReferenceID.ToString() +
+                        " ^ " + dBLBGreekConcordance[intGroupID][intReferenceID]);
+                }
+            }
+
+            swBLBGreekConcordance.Close();
+
+            //
+            //dEnglishPhraseCountsOrderedByPhrase
+            //
+
+            swEnglishPhraseCountsByPhrase.WriteLine("RowID ^ Phrase ^ Count");
+
+            intRowCounter = 0;
+            foreach (string strPhrase in GetEnglishPhraseOrderedByPhrase())
+            {
+                intRowCounter++;
+
+                swEnglishPhraseCountsByPhrase.WriteLine(intRowCounter.ToString() + " ^ " + strPhrase + " ^ " + dPhrasalConcordance[strPhrase]);
+            }
+
+            swEnglishPhraseCountsByPhrase.Close();
+
+            //
+            //dEnglishPhraseCountsOrderedByPhrase
+            //
+
+            swEnglishPhraseCountsByCount.WriteLine("RowID ^ Count ^ Phrase");
+
+            intRowCounter = 0;
+            foreach (string strPhrase in GetEnglishPhraseOrderedByCount())
+            {
+                intRowCounter++;
+
+                swEnglishPhraseCountsByCount.WriteLine(intRowCounter.ToString() + " ^ " + dPhrasalConcordance[strPhrase] + " ^ " + strPhrase);
+            }
+
+            swEnglishPhraseCountsByCount.Close();
+
+            //
+            //dSSCountsOrderedBySS
+            //
+
+            swSSBySS.WriteLine("RowID ^ StrongsSequence ^ Count");
+
+            intRowCounter = 0;
+            foreach (string strSS in dSSCountsOrderedBySS.Keys.OrderBy(a => a))
+            {
+                intRowCounter++;
+
+                swSSBySS.WriteLine(intRowCounter.ToString() + " ^ " + strSS + " ^ " + dSSCountsOrderedBySS[strSS].ToString());
+            }
+
+            swSSBySS.Close();
+
+            //
+            //dSScountsOrderedByCount
+            //
+
+            swSSByCount.WriteLine("RowID ^ Count ^ StrongsSequence");
+
+            intRowCounter = 0;
+            foreach (string strSS in dSSCountsOrderedByCount.OrderByDescending(a => a.Value).Select(a=>a.Key))
+            {
+                intRowCounter++;
+
+                swSSByCount.WriteLine(intRowCounter.ToString() + " ^ " + dSSCountsOrderedByCount[strSS].ToString() + " ^ " + strSS);
+            }
+
+            swSSByCount.Close();
+
+            //
+            //crossReferences
+            //
+
+            swCrossrefs.WriteLine("RowID ^ ReferencedPassage ^ ReferencingPassagesWithVoteCounts");
+
+            intRowCounter = 0;
+            foreach (string strReferenced in crossReferences.dCrossReferences.Keys.OrderBy(a => a))
+            {
+                string strReferencing = "";
+
+                intRowCounter++;
+
+                swCrossrefs.Write(intRowCounter.ToString() + " ^ " + strReferenced + " ^ ");
+
+                foreach (CrossReferenceDataFrame crdf in crossReferences.dCrossReferences[strReferenced])
+                {
+                    strReferencing += crdf.strReferencingBeginning + "-" + crdf.strReferencingEnding +
+                        "%" + crdf.intVotes.ToString() + ", "; //referenced ^ referencing 1:1%votecount, complex 1:1-referencing 1:1%votecount, referencing 1:2%votecount
+                }
+
+                strReferencing.Remove(strReferencing.Length - 2); //remove the trailing ", "
+
+                swCrossrefs.WriteLine(strReferencing);
+            }
+
+            swCrossrefs.Close();
         }
     }
 }
