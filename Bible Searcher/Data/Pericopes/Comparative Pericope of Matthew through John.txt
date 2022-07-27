@@ -1,0 +1,358 @@
+(This pericopoe is from Wikipedia - https://en.wikipedia.org/wiki/Gospel_harmony#A_parallel_harmony_presentation, retrieved July 2022.)
+
+ID/Title	Matt	Mark	Luke	John
+Pericope.001: Jesus is the Word 				1.1-1.5
+Pericope.002: God became a human being 				1.10-1.18
+Pericope.003: Jesus' ancestry back to Adam 			3.23-3.38 	
+Pericope.004: Jesus' ancestry from Abraham	1.1-1.17 			
+Pericope.005: Luke's purpose in writing 			1.1-1.4 	
+Pericope.006: The angel Gabriel promises the birth of John to Zechariah 			1.5-1.25 	
+Pericope.007: The angel Gabriel promises the birth of Jesus to Mary 			1.26-1.38 	
+Pericope.008: Mary visits Elizabeth 			1.39-1.56 	
+Pericope.009: John the Baptist is born 			1.57-1.80 	
+Pericope.010: An angel appears to Joseph	1.18-1.25 			
+Pericope.011: Jesus is born in Bethlehem 			2.1-2.7 	
+Pericope.012: Shepherds visit Jesus 			2.8-2.20 	
+Pericope.013: Wise men visit from eastern lands	2.1-2.12 			
+Pericope.014: Mary and Joseph bring Jesus to the temple 			2.21-2.38 	
+Pericope.015: Joseph takes his family to Egypt	2.13-2.18 			
+Pericope.016: Joseph returns with his family to Nazareth	2.19-2.23 			
+Pericope.017: Jesus grows up in Nazareth 			2.39-2.40 	
+Pericope.018: Jesus speaks with religious teachers in the temple 			2.41-2.52 	
+Pericope.019: John the Baptist comes as a witness to the light 				1.6-1.9
+Pericope.020: John the Baptist prepares the way for Jesus	3.1-3.6	1.1-1.6	3.1-3.6 	
+Pericope.021: John the Baptist calls for repentence	3.7-3.10 		3.7-3.9 	
+Pericope.022: John the Baptist tells people how to show their repentence 			3.10-3.14 	
+Pericope.023: John the Baptist tells about the Christ	3.11-3.12	1.7-1.8	3.15-3.18 	
+Pericope.024: John the Baptist declares his mission 				1.19-1.28
+Pericope.025: John baptizes Jesus	3.13-3.17	1.9-1.11	3.21-3.22 	
+Pericope.026: John the Baptist proclaims Jesus as the Messiah 				1.29-1.34
+Pericope.027: Satan tempts Jesus in the desert	4.1-4.11	1.12-1.13	4.1-4.13 	
+Pericope.028: The first disciples follow Jesus 				1.35-1.51
+Pericope.029: Jesus turns water into wine 				2.1-2.11
+Pericope.030: Jesus stays in Capernaum 				2.12-2.12
+Pericope.031: Jesus clears the temple 				2.13-2.22
+Pericope.032: Jesus does not trust himself to people 				2.23-2.25
+Pericope.033: Nicodemus visits Jesus at night 				3.1-3.21
+Pericope.034: Jesus and his disciples baptize in Judea 				3.22-3.22
+Pericope.035: John the Baptist accepts Jesus' growing popularity 				3.23-3.36
+Pericope.036: Jesus leaves Judea for Galilee 				4.1-4.3
+Pericope.037: Jesus talks to a Samaritan woman at the well 				4.4-4.26
+Pericope.038: Jesus tells about the spiritual harvest 				4.27-4.38
+Pericope.039: Many Samaritans believe in Jesus 				4.39-4.42
+Pericope.040: Herod puts John in prison 			3.19-3.20 	
+Pericope.041: Jesus preaches in Galilee	4.12-4.17	1.14-1.15	4.14-4.15	4.43-4.45
+Pericope.042: Jesus heals a royal official's son 				4.46-4.54
+Pericope.043: Jesus is rejected at Nazareth 			4.16-4.30 	
+Pericope.044: Jesus calls four fishermen to follow him	4.18-4.22	1.16-1.20 		
+Pericope.045: Jesus teaches with authority 		1.21-1.28	4.31-4.37 	
+Pericope.046: Jesus heals Peter's mother-in-law and many others in Capernaum	8.14-8.17	1.29-1.34	4.38-4.41 	
+Pericope.047: Jesus goes out alone to pray 		1.35-1.38	4.42-4.43 	
+Pericope.048: Jesus preaches throughout Galilee	4.23-4.25	1.39-1.39	4.44-4.44 	
+Pericope.049: Jesus provides a miraculous catch of fish 			5.1-5.11 	
+Pericope.050: Jesus heals a man with leprosy	8.1-8.4	1.40-1.45	5.12-5.16 	
+Pericope.051: Jesus heals a paralyzed man	9.1-9.8	2.1-2.12	5.17-5.26 	
+Pericope.052: Jesus calls a tax collector to follow him	9.9-9.13	2.13-2.17	5.27-5.32 	
+Pericope.053: The religious leaders ask Jesus about fasting	9.14-9.17	2.18-2.22	5.33-5.39 	
+Pericope.054: Jesus heals a lame man by the pool of Bethesda 				5.1-5.18
+Pericope.055: Jesus claims to be God's Son 				5.19-5.30
+Pericope.056: Jesus supports his claim to be God's Son 				5.31-5.47
+Pericope.057: The disciples pick wheat on the Sabbath	12.1-12.8	2.23-2.28	6.1-6.5 	
+Pericope.058: Jesus heals a man's hand on the Sabbath	12.9-12.14	3.1-3.6	6.6-6.11 	
+Pericope.059: Large crowds follow Jesus	12.15-12.21	3.7-3.12 		
+Pericope.060: Jesus selects the twelve disciples 		3.13-3.19	6.12-6.16 	
+Pericope.061: Jesus gives the Beatitudes	5.1-5.12 		6.17-6.23 	
+Pericope.062: Jesus warns against temporary comfort 			6.24-6.26 	
+Pericope.063: Jesus teaches about salt	5.13-5.13 			
+Pericope.064: Jesus teaches about light	5.14-5.16 		11.33-11.33 	
+Pericope.065: Jesus teaches about fulfilling the law	5.17-5.20 			
+Pericope.066: Jesus teaches about anger	5.21-5.26 			
+Pericope.067: Jesus teaches about lust	5.27-5.30 			
+Pericope.068: Jesus teaches about divorce	5.31-5.32 			
+Pericope.069: Jesus teaches about oaths	5.33-5.37 			
+Pericope.070: Jesus teaches about retaliation	5.38-5.42 			
+Pericope.071: Jesus teaches about loving enemies	5.43-5.48 		6.27-6.36 	
+Pericope.072: Jesus teaches about giving to the needy	6.1-6.4 			
+Pericope.073: Jesus teaches about prayer	6.5-6.15 			
+Pericope.074: Jesus teaches about fasting	6.16-6.18 			
+Pericope.075: Jesus teaches about treasure	6.19-6.21 		12.33-12.34 	
+Pericope.076: Jesus teaches about having a sound eye	6.22-6.23 		11.34-11.36 	
+Pericope.077: Jesus teaches about serving two masters	6.24-6.24 		16.13-16.13 	
+Pericope.078: Jesus teaches about worry	6.25-6.34 		12.22-12.32 	
+Pericope.079: Jesus teaches about criticizing others	7.1-7.5 		6.37-6.42 	
+Pericope.080: Jesus teaches about profaning holy things	7.6-7.6 			
+Pericope.081: Jesus teaches about asking, seeking, knocking	7.7-7.11 		11.9-11.13 	
+Pericope.082: Jesus sums up the Law	7.12-7.12 			
+Pericope.083: Jesus teaches about the narrow road to life	7.13-7.14 			
+Pericope.084: Jesus teaches about the fruit of people's lives	7.15-7.20 		6.43-6.45 	
+Pericope.085: Jesus teaches about putting his words into practice	7.21-7.27 		6.46-6.49 	
+Pericope.086: The crowds are astonished at Jesus' teaching	7.28-7.29 			
+Pericope.087: A Roman centurion shows great faith	8.5-8.13 		7.1-7.10 	
+Pericope.088: Jesus raises a widow's son from the dead 			7.11-7.17 	
+Pericope.089: Jesus eases John the Baptist's doubts	11.1-11.6 		7.18-7.23 	
+Pericope.090: Jesus teaches about John the Baptist	11.7-11.19 		7.24-7.35 	
+Pericope.091: A sinful woman anoints Jesus' feet 			7.36-7.50 	
+Pericope.092: Women accompany Jesus and the disciples 			8.1-8.3 	
+Pericope.093: Jesus describes his true family	12.46-12.50	3.31-3.35	8.19-8.21 	
+Pericope.094: Jesus tells the parable of the four soils	13.1-13.9	4.1-4.9	8.4-8.8 	
+Pericope.095: Jesus explains why he speaks in parables	13.10-13.17	4.10-4.12	8.9-8.10 	
+Pericope.096: Jesus explains the parable of the four soils	13.18-13.23	4.13-4.20	8.11-8.15 	
+Pericope.097: Jesus teaches people to consider carefully what they hear 		4.21-4.25	8.16-8.18 	
+Pericope.098: Jesus tells the parable of the growing seed 		4.26-4.29 		
+Pericope.099: Jesus tells the parable of the weeds	13.24-13.30 			
+Pericope.100: Jesus tells the parable of the mustard seed	13.31-13.32	4.30-4.32	13.18-13.19 	
+Pericope.101: Jesus tells the parable of the yeast	13.33-13.33 		13.20-13.21 	
+Pericope.102: Jesus uses many parables in his teaching	13.34-13.35	4.33-4.34 		
+Pericope.103: Jesus explains the parable of the weeds	13.36-13.43 			
+Pericope.104: Jesus tells the parable of hidden treasure	13.44-13.44 			
+Pericope.105: Jesus tells the parable of the pearl merchant	13.45-13.46 			
+Pericope.106: Jesus tells the parable of the fishing net	13.47-13.50 			
+Pericope.107: Jesus teaches about new and old treasure	13.51-13.52 			
+Pericope.108: Jesus calms the storm	8.23-8.27	4.35-4.41	8.22-8.25 	
+Pericope.109: Jesus sends demons into a herd of pigs	8.28-8.32	5.1-5.13	8.26-8.33 	
+Pericope.110: The Gerasenes ask Jesus to leave	8.33-8.34	5.14-5.20	8.34-8.39 	
+Pericope.111: A synagogue ruler asks Jesus to help his daughter	9.18-9.19	5.21-5.24	8.40-8.42 	
+Pericope.112: Jesus heals a bleeding woman	9.20-9.22	5.25-5.34	8.43-8.48 	
+Pericope.113: Jesus restores the daughter of a synagogue rule to life	9.23-9.26	5.35-5.43	8.49-8.56 	
+Pericope.114: Jesus heals two blind men	9.27-9.31 			
+Pericope.115: Jesus heals a mute demoniac	9.32-9.34 			
+Pericope.116: The people of Nazareth refuse to believe in Jesus	13.53-13.58	6.1-6.6 		
+Pericope.117: Jesus tells the disciples to pray for workers	9.35-9.38 			
+Pericope.118: Jesus sends out the twelve disciples	10.1-10.16	6.7-6.13	9.1-9.6 	
+Pericope.119: Jesus prepares the disciples for persecution	10.17-10.42 			
+Pericope.120: Herod wonders if John the Baptist has been raised from the dead	14.1-14.2	6.14-6.16	9.7-9.9 	
+Pericope.121: Herod kills John the Baptist	14.3-14.12	6.17-6.29 		
+Pericope.122: Jesus feeds five thousand	14.13-14.21	6.30-6.44	9.10-9.17	6.1-6.15
+Pericope.123: Jesus walks on water	14.22-14.33	6.45-6.52 		6.16-6.21
+Pericope.124: Jesus heals all who touch him	14.34-14.36	6.53-6.56 		
+Pericope.125: Jesus proclaims he is the true bread from heaven 				6.22-6.40
+Pericope.126: The Jews disagree that Jesus is from heaven 				6.41-6.59
+Pericope.127: Many disciples desert Jesus 				6.60-6.71
+Pericope.128: The religious leaders criticize Jesus about ceremonial washing	15.1-15.9	7.1-7.13 		
+Pericope.129: Jesus teaches the crowd about the source of uncleanness 	15.10-15.11	7.14-7.16 		
+Pericope.130: Jesus teaches the disciples about the source of uncleanness 	15.12-15.20	7.17-7.23 		
+Pericope.131: Jesus sends a demon out of a girl	15.21-15.28	7.24-7.30 		
+Pericope.132: Jesus heals a deaf man 		7.31-7.37 		
+Pericope.133: The crowd marvels at Jesus' healings	15.29-15.31 			
+Pericope.134: Jesus feeds four thousand	15.32-15.39	8.1-8.10 		
+Pericope.135: The religious leaders ask for a sign in the sky	16.1-16.4	8.11-8.13 		
+Pericope.136: Jesus warns against wrong teaching	16.5-16.12	8.14-8.21 		
+Pericope.137: Jesus restores sight to a blind man 		8.22-8.26 		
+Pericope.138: Peter declares Jesus is the Messiah	16.13-16.20	8.27-8.30	9.18-9.21 	
+Pericope.139: Jesus predicts his death the first time	16.21-16.23	8.31-8.33	9.22-9.22 	
+Pericope.140: Jesus calls his disciples to deny themselves	16.24-16.28	8.34-9.1	9.23-9.27 	
+Pericope.141: Jesus is transfigured on the mountain	17.1-17.9	9.2-9.10	9.28-9.36 	
+Pericope.142: The disciples ask about the coming of Elijah	17.10-17.13	9.11-9.13 		
+Pericope.143: Jesus heals a demon-possessed boy	17.14-17.18	9.14-9.27	9.37-9.42 	
+Pericope.144: The disciples ask why they couldn't heal the demon-possessed boy	17.19-17.21	9.28-9.29 		
+Pericope.145: Jesus predicts his death the second time	17.22-17.23	9.30-9.32	9.43-9.45 	
+Pericope.146: Peter finds the coin in the fish's mouth	17.24-17.27 			
+Pericope.147: Jesus teaches about being the least of all	18.1-18.5	9.33-9.37	9.46-9.48 	
+Pericope.148: Jesus warns against forbidding others to work in his name 		9.38-9.41	9.49-9.50 	
+Pericope.149: Jesus warns against temptations to sin	18.6-18.9	9.42-9.50	17.1-17.2 	
+Pericope.150: Jesus warns against looking down on others	18.10-18.14 			
+Pericope.151: Jesus teaches how to treat a believer who sins	18.15-18.18 			
+Pericope.152: Jesus teaches about the power of agreeing in prayer	18.19-18.20 			
+Pericope.153: Jesus teaches about forgiving others	18.21-18.22 		17.3-17.4 	
+Pericope.154: Jesus tells the parable of the unforgiving debtor	18.23-18.35 			
+Pericope.155: Jesus sends out seventy-two messengers 			10.1-10.12 	
+Pericope.156: Jesus warns cities that have not repented	11.20-11.24 		10.13-10.15 	
+Pericope.157: Jesus teaches about people's response to his messengers 			10.16-10.16 	
+Pericope.158: The seventy-two messengers return 			10.17-10.20 	
+Pericope.159: Jesus praises the Father for revealing His truth	11.25-11.27 		10.21-10.22 	
+Pericope.160: Jesus promises rest for the soul	11.28-11.30 			
+Pericope.161: Jesus teaches the disciples that they are blessed for what they see 			10.23-10.24 	
+Pericope.162: A lawyer asks Jesus about eternal life 			10.25-10.28 	
+Pericope.163: Jesus tells the parable of the Good Samaritan 			10.29-10.37 	
+Pericope.164: Jesus visits Mary and Martha 			10.38-10.42 	
+Pericope.165: Jesus teaches his disciples how to pray 			11.1-11.4 	
+Pericope.166: Jesus tells about the friend who asks for help at midnight 			11.5-11.8 	
+Pericope.167: Jesus answers accusers about how he drives out demons	12.22-12.30	3.20-3.27	11.14-11.23 	
+Pericope.168: Jesus warns against blaspheming the Holy Spirit	12.31-12.32	3.28-3.30 		
+Pericope.169: Jesus warns the religious leaders about their words and their hearts	12.33-12.37 			
+Pericope.170: Jesus warns about demons returning	12.43-12.45 		11.24-11.26 	
+Pericope.171: Jesus tells a woman about obeying God's word 			11.27-11.28 	
+Pericope.172: Jesus warns against unbelief	12.38-12.42 		11.29-11.32 	
+Pericope.173: Jesus criticizes the religious leaders 			11.37-11.54 	
+Pericope.174: Jesus teaches about acknowledging him before others 			12.1-12.12 	
+Pericope.175: Jesus tells the parable of the rich fool 			12.13-12.21 	
+Pericope.176: Jesus warns about coming division 			12.49-12.53 	
+Pericope.177: Jesus warns about the future crisis 			12.54-12.56 	
+Pericope.178: Jesus teaches about reconciliation 			12.57-12.59 	
+Pericope.179: Jesus calls people to repent 			13.1-13.5 	
+Pericope.180: Jesus tells the parable of the fruitless tree 			13.6-13.9 	
+Pericope.181: Jesus heals a crippled woman 			13.10-13.17 	
+Pericope.182: Jesus' brothers ridicule him 				7.1-7.9
+Pericope.183: Jesus is rejected at a Samaritan village 			9.51-9.56 	
+Pericope.184: Jesus teaches about the cost of following him	8.18-8.22 		9.57-9.62 	
+Pericope.185: Jesus travels to Jerusalem in secret 				7.10-7.13
+Pericope.186: Jesus teaches openly at the temple 				7.14-7.31
+Pericope.187: The religious leaders attempt to arrest Jesus 				7.32-7.36
+Pericope.188: Jesus teaches about living water 				7.37-7.39
+Pericope.189: The people are divided over Jesus 				7.40-7.44
+Pericope.190: The religious leaders refuse to believe in Jesus 				7.45-7.52
+Pericope.191: Jesus forgives an adulterous woman 				7.53-8.11
+Pericope.192: Jesus is the light of the world 				8.12-8.20
+Pericope.193: Jesus warns of coming judgment 				8.21-8.30
+Pericope.194: Jesus speaks about true freedom 				8.31-8.36
+Pericope.195: Jesus speaks about God's true children 				8.37-8.47
+Pericope.196: Jesus declares that he is eternal 				8.48-8.59
+Pericope.197: Jesus heals a man who was born blind 				9.1-9.12
+Pericope.198: The religious leaders question the blind man 				9.13-9.34
+Pericope.199: Jesus teaches about spiritual blindness 				9.35-9.41
+Pericope.200: Jesus is the Good Shepherd 				10.1-10.18
+Pericope.201: The Jews are divided about Jesus 				10.19-10.21
+Pericope.202: The Jews confront Jesus at the temple 				10.22-10.39
+Pericope.203: Jesus goes beyond the Jordan 				10.40-10.42
+Pericope.204: Jesus teaches about entering the kingdom 			13.22-13.30 	
+Pericope.205: The Pharisees warn Jesus that Herod wants to kill Him 			13.31-13.33 	
+Pericope.206: Jesus grieves over Jerusalem	23.37-23.39 		13.34-13.35 	
+Pericope.207: Jesus heals a man with dropsy 			14.1-14.6 	
+Pericope.208: Jesus warns against seeking honor 			14.7-14.14 	
+Pericope.209: Jesus tells the parable of the great feast 			14.15-14.24 	
+Pericope.210: Jesus teaches about the cost of being a disciple 			14.25-14.35 	
+Pericope.211: Jesus tells the parable of the lost sheep 			15.1-15.7 	
+Pericope.212: Jesus tells the parable of the lost coin 			15.8-15.10 	
+Pericope.213: Jesus tells the parable of the lost son 			15.11-15.32 	
+Pericope.214: Jesus tells the parable of the shrewd manager 			16.1-16.9 	
+Pericope.215: Jesus teaches about being faithful 			16.10-16.12 	
+Pericope.216: Jesus criticizes the Pharisees for their love of money 			16.14-16.15 	
+Pericope.217: Jesus teaches about the Law and the Kingdom 			16.16-16.17 	
+Pericope.218: Jesus tells about the rich man and the beggar 			16.19-16.31 	
+Pericope.219: Jesus teaches about faith 			17.5-17.6 	
+Pericope.220: Jesus teaches about doing your duty 			17.7-17.10 	
+Pericope.221: Lazarus becomes ill and dies 				11.1-11.16
+Pericope.222: Jesus comforts Mary and Martha 				11.17-11.37
+Pericope.223: Jesus raises Lazarus from the dead 				11.38-11.44
+Pericope.224: Caiaphas advises the religious leaders to kill Jesus 				11.45-11.53
+Pericope.225: Jesus withdraws to Ephraim 				11.54-11.57
+Pericope.226: Jesus heals ten men with leprosy 			17.11-17.19 	
+Pericope.227: Jesus answers the Pharisees about the coming of the Kingdom of God 			17.20-17.21 	
+Pericope.228: Jesus teaches about the coming day of the Son of Man 			17.22-17.37 	
+Pericope.229: Jesus tells the parable of the persistent widow 			18.1-18.8 	
+Pericope.230: Jesus tells the parable of two men who prayed 			18.9-18.14 	
+Pericope.231: Jesus teaches about marriage and divorce	19.1-19.9	10.1-10.9 		
+Pericope.232: Jesus teaches the disciples about celibacy	19.10-19.12 			
+Pericope.233: Jesus teaches the disciples about marriage and divorce 		10.10-10.12	16.18-16.18 	
+Pericope.234: Jesus blesses little children	19.13-19.15	10.13-10.16	18.15-18.17 	
+Pericope.235: Jesus speaks to a rich young ruler	19.16-19.22	10.17-10.22	18.18-18.23 	
+Pericope.236: Jesus teaches about riches	19.23-19.26	10.23-10.27	18.24-18.27 	
+Pericope.237: Jesus teaches about the rewards of following him	19.27-19.30	10.28-10.31	18.28-18.30 	
+Pericope.238: Jesus tells the parable of the workers paid equally	20.1-20.16 			
+Pericope.239: Jesus predicts his death the third time	20.17-20.19	10.32-10.34	18.31-18.34 	
+Pericope.240: Jesus teaches about serving others	20.20-20.28	10.35-10.45 		
+Pericope.241: Jesus heals a blind beggar	20.29-20.34	10.46-10.52	18.35-18.43 	
+Pericope.242: Jesus goes to Zacchaeus's house 			19.1-19.10 	
+Pericope.243: Jesus tells the parable of the king's ten servants 			19.11-19.27 	
+Pericope.244: A woman anoints Jesus with expensive perfume	26.6-26.13	14.3-14.9 		12.1-12.8
+Pericope.245: The religious leaders plot to kill Lazarus 				12.9-12.11
+Pericope.246: Jesus rides into Jerusalem on a donkey	21.1-21.11	11.1-11.11	19.28-19.40	12.12-12.19
+Pericope.247: Jesus weeps over Jerusalem 			19.41-19.44 	
+Pericope.248: Jesus curses a fig tree	21.18-21.19	11.12-11.14 		
+Pericope.249: Jesus clears the temple again	21.12-21.17	11.15-11.17	19.45-19.46 	
+Pericope.250: The religious leaders conspire against Jesus 		11.18-11.19	19.47-19.48 	
+Pericope.251: Jesus explains why he must die 				12.20-12.36
+Pericope.252: Most of the people do not believe in Jesus 				12.37-12.43
+Pericope.253: Jesus summarizes his message 				12.44-12.50
+Pericope.254: Jesus teaches about faith and prayer	21.20-21.22	11.20-11.26 		
+Pericope.255: The religious leaders challenge Jesus' authority	21.23-21.27	11.27-11.33	20.1-20.8 	
+Pericope.256: Jesus tells the parable of the two sons	21.28-21.32 			
+Pericope.257: Jesus tells the parable of the wicked tenants	21.33-21.46	12.1-12.12	20.9-20.19 	
+Pericope.258: Jesus tells the parable of the wedding feast	22.1-22.14 			
+Pericope.259: The religious leaders question Jesus about paying taxes	22.15-22.22	12.13-12.17	20.20-20.26 	
+Pericope.260: The religious leaders question Jesus about the resurrection	22.23-22.33	12.18-12.27	20.27-20.40 	
+Pericope.261: The religious leaders question Jesus about the greatest commandment	22.34-22.40	12.28-12.34 		
+Pericope.262: Jesus questions religious leaders about the Christ	22.41-22.46	12.35-12.37	20.41-20.44 	
+Pericope.263: Jesus warns against the practices of the religious leaders	23.1-23.12	12.38-12.40	20.45-20.47 	
+Pericope.264: Jesus condemns the religious leaders	23.13-23.36 			
+Pericope.265: A poor widow gives all she has 		12.41-12.44	21.1-21.4 	
+Pericope.266: Jesus predicts the destruction of the Temple	24.1-24.2	13.1-13.2	21.5-21.6 	
+Pericope.267: Jesus predicts the signs before the end	24.3-24.8	13.3-13.8	21.7-21.11 	
+Pericope.268: Jesus predicts persecutions before the end	24.9-24.14	13.9-13.13	21.12-21.19 	
+Pericope.269: Jesus tells about the desolating sacrilege	24.15-24.22	13.14-13.20	21.20-21.24 	
+Pericope.270: Jesus warns about false Christs and prophets	24.23-24.28	13.21-13.23 		
+Pericope.271: Jesus tells about his return	24.29-24.31	13.24-13.27	21.25-21.28 	
+Pericope.272: Jesus tells the parable of the fig tree	24.32-24.36	13.28-13.32	21.29-21.33 	
+Pericope.273: Jesus compares his coming to the days of Noah	24.37-24.41 			
+Pericope.274: Jesus tells about remaining watchful	24.42-24.44	13.33-13.37	12.35-12.40 	
+Pericope.275: Jesus warns against not watching for his coming 			21.34-21.36 	
+Pericope.276: Jesus tells about the wise and foolish managers	24.45-24.51 		12.41-12.48 	
+Pericope.277: Jesus tells the parable of the ten bridesmaids	25.1-25.13 			
+Pericope.278: Jesus tells the parable of the loaned money	25.14-25.30 			
+Pericope.279: Jesus tells about the final judgment	25.31-25.46 			
+Pericope.280: Jesus teaches daily in the temple 			21.37-21.38 	
+Pericope.281: Jesus tells his disciples about his coming crucifixion	26.1-26.2 			
+Pericope.282: The religious leaders plot to kill Jesus	26.3-26.5	14.1-14.2	22.1-22.2 	
+Pericope.283: Judas agrees to betray Jesus	26.14-26.16	14.10-14.11	22.3-22.6 	
+Pericope.284: Disciples prepare for the Passover	26.17-26.20	14.12-14.17	22.7-22.14 	
+Pericope.285: Jesus washes the disciples' feet 				13.1-13.11
+Pericope.286: Jesus teaches the disciples after washing their feet 				13.12-13.20
+Pericope.287: Jesus declares that one of the disciples will betray him 	26.21-26.25	14.18-14.21	22.21-22.23	13.21-13.30
+Pericope.288: Jesus and the disciples have the Last Supper	26.26-26.29	14.22-14.25	22.15-22.20 	
+Pericope.289: Jesus teaches about servanthood 			22.24-22.30 	
+Pericope.290: Jesus commands the disciples to love one another 				13.31-13.35
+Pericope.291: Jesus predicts Peter's denial 			22.31-22.34	13.36-13.38
+Pericope.292: Jesus is the way to the Father 				14.1-14.14
+Pericope.293: Jesus promises the Holy Spirit 				14.15-14.31
+Pericope.294: Jesus teaches about the vine and the branches 				15.1-15.17
+Pericope.295: Jesus warns about the world's hatred 				15.18-16.4
+Pericope.296: Jesus teaches about the Holy Spirit 				16.5-16.15
+Pericope.297: Jesus tells the disciples their sorrow will turn to joy 				16.16-16.22
+Pericope.298: Jesus teaches about using his name in prayer 				16.23-16.28
+Pericope.299: Jesus predicts that the disciples will be scattered 				16.29-16.33
+Pericope.300: Jesus prays for himself 				17.1-17.5
+Pericope.301: Jesus prays for his disciples 				17.6-17.19
+Pericope.302: Jesus prays for future believers 				17.20-17.26
+Pericope.303: Jesus tells the disciples to prepare for his arrest 			22.35-22.38 	
+Pericope.304: Jesus and the disciples go to the Mount of Olives	26.30-26.30	14.26-14.26	22.39-22.39	18.1-18.1
+Pericope.305: Jesus again predicts Peter's denial	26.31-26.35	14.27-14.31 		
+Pericope.306: Jesus agonizes in the garden	26.36-26.46	14.32-14.42	22.40-22.46 	
+Pericope.307: Jesus is betrayed and arrested	26.47-26.50	14.43-14.46	22.47-22.49	18.2-18.3
+Pericope.308: Jesus identifies himself to those who have come to arrest him 				18.4-18.9
+Pericope.309: Peter strikes the high priest's servant	26.51-26.54	14.47-14.47	22.50-22.51	18.10-18.11
+Pericope.310: Jesus questions why they have brought weapons to arrest him	26.55-26.56	14.48-14.50	22.52-22.53 	
+Pericope.311: The last follower runs away naked 		14.51-14.52 		
+Pericope.312: Jesus is bound and taken to Annas 				18.12-18.14
+Pericope.313: Peter denies knowing Jesus a first time 				18.15-18.18
+Pericope.314: Annas questions Jesus 				18.19-18.24
+Pericope.315: Caiaphas questions Jesus	26.57-26.68	14.53-14.65 		
+Pericope.316: Peter denies knowing Jesus	26.69-26.75	14.66-14.72	22.54-22.62	18.25-18.27
+Pericope.317: Jesus' captors mock him 			22.63-22.65 	
+Pericope.318: The council of religious leaders condemns Jesus	27.1-27.2	15.1-15.1	22.66-23.1	18.28-18.28
+Pericope.319: Judas kills himself	27.3-27.5 			
+Pericope.320: The chief priests use Judas' money to buy a field	27.6-27.10 			
+Pericope.321: The religious leaders accuse Jesus before Pilate	27.11-27.14	15.2-15.5	23.2-23.2	18.29-18.32
+Pericope.322: Pilate questions Jesus 			23.3-23.3	18.33-18.37
+Pericope.323: Pilate answers the religious leaders 			23.4-23.5 	
+Pericope.324: Jesus stands trial before Herod 			23.6-23.12 	
+Pericope.325: Pilate answers the religious leaders a second time	27.15-27.21	15.6-15.11	23.13-23.19	18.38-18.40
+Pericope.326: Jesus is flogged 				19.1-19.3
+Pericope.327: The crowd calls for crucifixion	27.22-27.22	15.12-15.13	23.20-23.21	19.4-19.7
+Pericope.328: Pilate questions Jesus again 				19.8-19.11
+Pericope.329: Pilate hands Jesus over to be crucified	27.23-27.26	15.14-15.15	23.22-23.25	19.12-19.16
+Pericope.330: Roman soldiers mock Jesus	27.27-27.31	15.16-15.20 		
+Pericope.331: Simon of Cyrene carries Jesus' cross	27.32-27.32	15.21-15.21	23.26-23.26 	
+Pericope.332: Jesus speaks to those who follow and mourn 			23.27-23.32 	
+Pericope.333: Jesus is crucified	27.33-27.37	15.22-15.26	23.33-23.34	19.17-19.27
+Pericope.334: Jesus is mocked on the cross	27.38-27.44	15.27-15.32	23.35-23.38 	
+Pericope.335: A criminal asks Jesus to remember him 			23.39-23.43 	
+Pericope.336: Jesus dies on the cross	27.45-27.54	15.33-15.39	23.44-23.48	19.28-19.37
+Pericope.337: Women watch the crucifixion from a distance	27.55-27.56	15.40-15.41	23.49-23.49 	
+Pericope.338: Jesus is laid in the tomb	27.57-27.61	15.42-15.47	23.50-23.56	19.38-19.42
+Pericope.339: Guards are posted at the tomb	27.62-27.66 			
+Pericope.340: Some women find the tomb empty	28.1-28.7	16.1-16.8	24.1-24.7	20.1-20.1
+Pericope.341: The women tell the disciples of the empty tomb 			24.8-24.11	20.2-20.2
+Pericope.342: Peter and John go to the empty tomb 			24.12-24.12	20.3-20.9
+Pericope.343: Jesus appears to Mary Magdalene 		16.9-16.11 		20.10-20.18
+Pericope.344: Jesus appears to the women	28.8-28.10 			
+Pericope.345: The religious leaders bribe the guards	28.11-28.15 			
+Pericope.346: Jesus appears to two believers traveling on the road 		16.12-16.13	24.13-24.35 	
+Pericope.347: Jesus appears to the disciples behind locked doors 			24.36-24.43	20.19-20.23
+Pericope.348: Jesus appears to the eleven disciples as they are eating 		16.14-16.18 		
+Pericope.349: Jesus appears to the disciples including Thomas 				20.24-20.29
+Pericope.350: John's purpose in writing 				20.30-20.31
+Pericope.351: Jesus appears to the disciples while fishing 				21.1-21.14
+Pericope.352: Jesus talks with Peter 				21.15-21.25
+Pericope.353: Jesus appears to the disciples in Jerusalem 			24.44-24.49 	
+Pericope.354: Jesus gives the Great Commission	28.16-28.20 			
+Pericope.355: Jesus ascends into heaven 		16.19-16.20	24.50-24.53 	

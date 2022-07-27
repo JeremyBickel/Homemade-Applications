@@ -1,0 +1,46 @@
+namespace WordTactics
+{
+internal class PublicSpeakingandPresentations
+{
+//&#160;
+//Public Speaking and Presentations: Tips for Success
+//This resource includes tips and suggestions for improving your public speaking skills.
+//Even if you&#8217;ve never spoken in front of a large group before, chances are you will encounter public speaking sometime during your life. Whether you&#8217;re giving a presentation for your classmates or addressing local politicians at a city council meeting, public speaking allows you to convey your thoughts and feelings in clear ways. Having the right tools can prepare you for successful public speaking and equip you with high-quality communication skills.
+//Know Your Audience
+//Different audiences require different modes of public speaking. How you address a room full of preschoolers will vary from how you address a group of professors at an academic conference. Not only will your vocabulary change, but you might alter your pacing and tone as well.
+//Knowing your audience also helps you decide the content of your speech. For example, if you&#8217;re presenting research to a group of scientists, you might not need to define all your scientific language. However, if you present that same research to a group of individuals who are unfamiliar with your scientific field, you may need to define your terms or use simpler language.
+//Recognizing the extent to which your audience is familiar with your topic helps you center your presentation around the most important elements and avoid wasting time on information your audience either 1) already knows or 2) does not need to know for the purpose of your speech.
+//Knowing your audience also means tailoring your information to them. Try to keep things straight and to the point; leave out extraneous anecdotes and irrelevant statistics.
+//Establish Your Ethos and Feel Confident in Your Subject
+//It&#8217;s important to let your audience know what authority you have over your subject matter. If it&#8217;s clear you are familiar with your subject and have expertise, your audience is more likely to trust what you say.
+//Feeling confident in your subject matter will help establish your ethos. Rather than simply memorizing the content on your PowerPoint slides or your note cards, consider yourself a &#8220;mini expert&#8221; on your topic. Read up on information related to your topic and anticipate questions from the audience. You might want to prepare a few additional examples to use if people ask follow-up questions. Being able to elaborate on your talking points will help you stay calm during a Q &amp; A section of your presentation. 
+//Stick to a Few Main Points
+//Organizing your information in a logical way not only helps you keep track of what you&#8217;re saying, but it helps your audience follow along as well. Try to emphasize a few main points in your presentation and return to them before you conclude. Summarizing your information at the end of your presentation allows your audience to walk away with a clear sense of the most important facts.
+//For example, if you gave a presentation on the pros and cons of wind energy in Indiana, you would first want to define wind energy to make sure you and your audience are on the same page. You might also want to give a brief history of wind energy to give context before you go into the pros and cons. From there, you could list a few pros and a few cons. Finally, you could speculate on the future of wind energy and whether Indiana could provide adequate land and infrastructure to sustain wind turbines. To conclude, restate a few of the main points (most likely the pros and cons) and end with the most important takeaway you want the audience to remember about wind energy in Indiana.
+//Don't be Afraid to Show Your Personality
+//Delivering information without any sort of flourish or style can be boring. Allowing your personality to show through your speaking keeps you feeling relaxed and natural. Even if you&#8217;re speaking about something very scientific or serious, look for ways to let your personality come through your speech.
+//For example, when Jeopardy! host Alex Trebek announced in March of 2019 that he had stage 4 pancreatic cancer, he still let his trademark dignity and professionalism set the tone for his address. He began his announcement by saying &#8220;it&#8217;s in keeping with my long-time policy of being open and transparent with our Jeopardy! fan base.&#8221; Later, he joked that he would need to overcome his illness in order to fulfill his contract, whose terms required him to host the show for three more years. Though the nature of Trebek's announcement could easily have justified a grim, serious tone, the host instead opted to display the charm that has made him a household name for almost thirty-five years. In doing so, he reminded his audience precisely why he is so well-loved.
+//Use Humor (When Appropriate)
+//Using humor at appropriate moments can keep your audience engaged and entertained. While not all occasions are appropriate for humor, look for moments where you can lighten the mood and add some humor. 
+//For example, just two months after the assassination attempt on Ronald Reagan, Reagan was in the middle of giving a speech when a balloon loudly popped while he was speaking. Reagan paused his speech to say &#8220;missed me,&#8221; then immediately continued speaking. This off-the-cuff humor worked because it was appropriate, spontaneous, and did not really distract from his message.
+//Similarly, at the end of his final White House Correspondents Dinner, Barack Obama concluded his speech by saying &#8220;Obama out&#8221; and dropping the mic. Once again, the humor did not distract from his message, but it did provide a light-hearted shift in his tone. &#160;
+//Don't Let Visual Aids Distract From Your Presentation
+//Visual aids, such as PowerPoints or handouts, often go alongside presentations. When designing visual aids, be sure they do not distract from the content of your speech. Having too many pictures or animations can cause audience members to pay more attention to the visuals rather than what you&#8217;re saying.
+//However, if you present research that relies on tables or figures, having many images may help your audience better visualize the research you discuss. Be aware of the ways different types of presentations demand different types of visual aids.
+//Be Aware of Your Body Language
+//When it comes to giving a presentation, nonverbal communication is equally as important as what you&#8217;re saying. Having the appropriate posture, gestures, and movement complement the spoken element of your presentation. Below are a few simple strategies to make you appear more confident and professional.
+//Posture
+//Having confident posture can make or break a presentation. Stand up straight with your shoulders back and your arms at your sides. Slouching or crossing your arms over your chest makes you appear smaller and more insecure. However, be sure you&#8217;re not too rigid. Just because you&#8217;re standing up tall does not mean you cannot move around.
+//Eye contact
+//Making eye contact with your audience not only makes them feel connected to you but it also lets you gauge their response to you. Try to look around the room and connect with different audience members so you&#8217;re not staring at the same people the whole time. If you notice your audience starting to nod off, it might be a good time to change your tone or up your energy.&#160;
+//Avoid distracting or compulsive gestures
+//While hand gestures can help point out information in a slide or on a poster, large or quick gestures can be distracting. When using gestures, try to make them feel like a normal part of your presentation.
+//It&#8217;s also easy to slip into nervous gestures while presenting. Things like twirling your hair or wringing your hands can be distracting to your audience. If you know you do something like this, try to think hard about not doing it while you&#8217;re presenting.
+//Travel (if possible)
+//If you are presenting on a stage, walking back and forth can help you stay relaxed and look natural. However, be sure you&#8217;re walking slowly and confidently and you&#8217;re using an appropriate posture (described above). Try to avoid pacing, which can make you appear nervous or compulsive.
+//Rehearse (if Possible)
+//The difference between knowing your subject and rehearsing comes down to how you ultimately present your information. The more you rehearse, the more likely you are to eliminate filler words such as like and um. If possible, try practicing with a friend and have them use count the filler words you use. You can also record yourself and play back the video. The more you rehearse, the more confident you will feel when it comes time to actually speak in front of an audience.
+//Finally, Relax!
+//Although public speaking takes time and preparation, perhaps one of the most important points is to relax while you&#8217;re speaking. Delivering your information in a stiff way prevents you from appearing natural and letting your personality come through. The more relaxed you feel, the more confident your information will come across.
+}
+}

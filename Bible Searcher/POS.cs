@@ -681,5 +681,12 @@ namespace Bible_Searcher
 
             return strReturn;
         }
+
+        public string POSTagPhrase(string strPhrase)
+        {
+            string strReturn = "";
+
+            return strReturn;
+        }
     }
 }

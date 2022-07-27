@@ -26,7 +26,8 @@ namespace Bible_Searcher
                 {
                     string strExtended = "";
                     int intPartCounter = 0;
-                    string strAlternateParse = ""; //the alternate parse is Ncmpc/Sp3ms in HC/Npm//Ncmpc/Sp3ms <- double // splits an alternate
+
+                    //the alternate parse is Ncmpc/Sp3ms in HC/Npm//Ncmpc/Sp3ms <- double // splits an alternate
 
                     //Sometimes a morphology has more than one possibility.  Note the /_/ in the example which separates these possibilities:
                     //2Ki.19.37-08.Q	2Ki.19.37-08q	וְשַׂרְאֶצֶר בָּנָיו	וְ/שַׂרְאֶ֤צֶר/ /בָּנָי/ו֙	HC/Npm//Ncmpc/Sp3ms	H9002=ו=and/H8272=שַׁרְאֶ֫צֶר=Sharezer_§Sharezer@2Ki.19.37/_/H1121a=בֵּן=son_§1_child|son/H9023=Ps3m=his
@@ -43,7 +44,7 @@ namespace Bible_Searcher
                     foreach(string strPart in strLine.Split('\t'))
                     {
                         intPartCounter++;
-
+                      
                         if (intPartCounter == 5)
                         {
                             int intParsePartCounter = 0;
@@ -119,8 +120,14 @@ namespace Bible_Searcher
                         else
                         {
                             
-                                intPartCounter++;
-                                dLexicon[intLineCounter][intPartCounter].intWordOrderID = intPartCounter;
+                            intPartCounter++;
+                            
+                            if (!dLexicon[intLineCounter].ContainsKey(intPartCounter)) //there are more words than parses (ie. when the word doesn't have a parse; eg. H9016=׃=verseEnd)
+                            {
+                                dLexicon[intLineCounter].Add((int)intPartCounter, new Lexicon());
+                            }
+
+                            dLexicon[intLineCounter][intPartCounter].intWordOrderID = intPartCounter;
                             
                         }
 
@@ -195,7 +202,7 @@ namespace Bible_Searcher
                 }
             } //end while
 
-            var a = dLexicon.Where(a=>a.Value.Count() > 1).Select(a => a);
+            //var a = dLexicon.Where(a=>a.Value.Count() > 1).Select(a => a);
         }
     }
 

@@ -31,6 +31,7 @@
             this.lbBooks = new System.Windows.Forms.ListBox();
             this.rtbBible = new System.Windows.Forms.RichTextBox();
             this.rtbStrongs = new System.Windows.Forms.RichTextBox();
+            this.btnGo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbBooks
@@ -58,11 +59,22 @@
             this.rtbStrongs.TabIndex = 2;
             this.rtbStrongs.Text = "";
             // 
+            // btnGo
+            // 
+            this.btnGo.Location = new System.Drawing.Point(12, 599);
+            this.btnGo.Name = "btnGo";
+            this.btnGo.Size = new System.Drawing.Size(75, 23);
+            this.btnGo.TabIndex = 3;
+            this.btnGo.Text = "Go";
+            this.btnGo.UseVisualStyleBackColor = true;
+            this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
+            // 
             // Welcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 830);
+            this.Controls.Add(this.btnGo);
             this.Controls.Add(this.rtbStrongs);
             this.Controls.Add(this.rtbBible);
             this.Controls.Add(this.lbBooks);
@@ -77,5 +89,6 @@
         private ListBox lbBooks;
         private RichTextBox rtbBible;
         private RichTextBox rtbStrongs;
+        private Button btnGo;
     }
 }

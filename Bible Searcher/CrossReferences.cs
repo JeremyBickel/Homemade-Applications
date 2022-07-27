@@ -21,7 +21,6 @@ namespace Bible_Searcher
                 CrossReferenceDataFrame data = new CrossReferenceDataFrame(); 
                 string strLine = srCRs.ReadLine();
                 string[] strsLine = strLine.Split();
-                string strNormalFormReference = "";
                 Dictionary<string, string> dNormalizedReference = CreateNormalFormReference(strsLine[1]);
 
                 data.strReferenced = CreateNormalFormReference(strsLine[0]).First().Key;

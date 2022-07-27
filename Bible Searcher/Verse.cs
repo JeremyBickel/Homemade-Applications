@@ -45,9 +45,9 @@ namespace Bible_Searcher
 
     internal class SVO
     {
-        public Dictionary<int, string> dSubjects = new Dictionary<int, string>();
-        public Dictionary<int, string> dVerbs = new Dictionary<int, string>();
-        public Dictionary<int, ObjectRelation> dObjectRelations = new Dictionary<int, ObjectRelation>();
+        public Dictionary<int, string> dSubjects = new Dictionary<int, string>(); //D<Phrase ID, Phrase Text>
+        public Dictionary<int, string> dVerbs = new Dictionary<int, string>(); //D<Phrase ID, Phrase Text>
+        public Dictionary<int, ObjectRelation> dObjectRelations = new Dictionary<int, ObjectRelation>(); //D<Phrase ID, ObjectRelation object>
     }
 
     internal class ObjectRelation
